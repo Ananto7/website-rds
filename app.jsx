@@ -63,7 +63,7 @@ const products = [
         textOn: "#7A0030",
         bgRow: "#FFFFFF",
         bottle: {
-            details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 250l",
+            details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 150l",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
                 {qty: "100 PCS", price: "Rp 1.000.000"},
@@ -98,7 +98,7 @@ const products = [
         bgRow: "#FBF5FF",
 
         bottle: {
-            details: "Espresso · Fresh Milk · Aren Syrup · 250ml",
+            details: "Espresso · Fresh Milk · Aren Syrup · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
                 {qty: "100 PCS", price: "Rp 1.000.000"},
@@ -130,7 +130,7 @@ const products = [
         bgRow: "#FFFFFF",
 
         bottle: {
-            details: "Espresso · Fresh Milk · Sweetened Condensed Milk · 250ml",
+            details: "Espresso · Fresh Milk · Sweetened Condensed Milk · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
                 {qty: "100 PCS", price: "Rp 1.000.000"},
@@ -163,7 +163,7 @@ const products = [
         bgRow: "#FFFDF0",
 
         bottle: {
-            details: "Espresso · Fresh Milk · Almond Roast Syrup · 250ml",
+            details: "Espresso · Fresh Milk · Almond Roast Syrup · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 600.000"},
                 {qty: "100 PCS", price: "Rp 1.100.000"},
@@ -253,7 +253,7 @@ const serviceData = {
     },
     cup: {
         title: "Cup Concept.",
-        subtitle: "Disajikan panas atau dingin, langsung dari dispenser",
+        subtitle: "Disajikan dingin, langsung dari dispenser",
         items: [
             {
                 label: "Dispenser 5L Display",
@@ -392,7 +392,7 @@ function About() {
                     <p className="about-quote">"Kami menciptakan kopi bukan hanya untuk diminum, tetapi untuk menjadi
                         bagian dari momen."</p>
                     <div className="about-quote-divider"/>
-                    <p className="about-est">RDS Coffee · Est. 2022</p>
+                    <p className="about-est">RDS Coffee · Est. 2023</p>
                 </div>
                 <div>
                     <p className="label-gold">Tentang Kami</p>
@@ -455,7 +455,7 @@ function ProductModal({product, concept, onClose}) {
         setImgErr(false);
     }, [product.id, concept]);
 
-    const conceptLabel = concept === "bottle" ? "Bottle · 250ml" : "Cup · 100ml";
+    const conceptLabel = concept === "bottle" ? "Bottle · 150ml" : "Cup · 100ml";
 
     return (
         <div className="modal-overlay" onClick={onClose}>
@@ -543,17 +543,11 @@ function ProductModal({product, concept, onClose}) {
                         ))}
                     </div>
 
-                    {concept === "cup" && (
-                        <p style={{
-                            fontFamily: "var(--ff-body)",
-                            fontSize: "0.7rem",
-                            color: "var(--muted)",
-                            marginBottom: "1rem",
-                            fontStyle: "italic"
-                        }}>
-                            *Minimal order 100 pcs/varian
-                        </p>
-                    )}
+                    <p style={{ fontFamily:"var(--ff-body)", fontSize:"0.7rem", color:"var(--muted)", marginBottom:"1rem", fontStyle:"italic" }}>
+                        {concept === "bottle"
+                            ? "*Minimal order 50 pcs/varian"
+                            : "*Minimal order 100 pcs/varian"}
+                    </p>
 
                     <a href="#kontak" onClick={onClose} className="modal-cta">Pesan Sekarang</a>
                 </div>
@@ -671,7 +665,7 @@ function Products({concept, setConcept}) {
                         marginBottom: "0.25rem"
                     }}>
                         {[
-                            {key: "bottle", label: "🍾 Bottle", sub: "250ml"},
+                            {key: "bottle", label: "🍾 Bottle", sub: "150ml"},
                             {key: "cup", label: "☕ Cup", sub: "100ml"},
                         ].map(tab => (
                             <button
@@ -718,7 +712,7 @@ function Products({concept, setConcept}) {
                             textTransform: "uppercase",
                             fontWeight: 500
                         }}>
-                            {concept === "bottle" ? "Bottle Concept — 250ml" : "Cup Concept — 100ml · Min. 100 pcs/varian"}
+                            {concept === "bottle" ? "Bottle Concept — 150ml · Min. 50 pcs/varian" : "Cup Concept — 100ml · Min. 100 pcs/varian"}
                         </p>
                         <p style={{
                             fontFamily: "var(--ff-serif)",
