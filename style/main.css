@@ -1,0 +1,1392 @@
+/* ============================================================
+   RDS Coffee — Main Stylesheet
+   File: style/main.css
+   ============================================================
+
+   TABLE OF CONTENTS
+   1. CSS Variables (brand colors, typography, spacing)
+   2. Reset & Base
+   3. Typography Utilities
+   4. Navbar
+   5. Hero Section
+   6. About Section
+   7. Products Section (zigzag + modal)
+   8. Service Section
+   9. Events Section
+   10. Contact Section
+   11. Footer
+   12. Animations & Transitions
+   ============================================================ */
+
+
+/* ============================================================
+   1. CSS VARIABLES
+   ============================================================
+
+   CARA MENGGANTI WARNA BRAND:
+   - Ubah nilai --gold untuk warna aksen utama (saat ini emas)
+   - Ubah --charcoal untuk warna teks utama
+   - Ubah --ivory / --cream untuk warna background
+
+   WARNA PRODUK — diatur di app.jsx di array `products[]`
+   Lihat komentar di app.jsx bagian "DATA PRODUK"
+   ============================================================ */
+
+:root {
+    /* Background colors — dari terang ke sedikit lebih hangat */
+    --ivory: #FDFAF5; /* background utama halaman */
+    --white: #FFFFFF; /* section putih bersih */
+    --cream: #FAF6EE; /* background section kontak */
+
+    /* Pastel section backgrounds — masing-masing untuk satu produk */
+    --blush: #FEF0F3; /* background section COAST (pink) */
+    --sky: #EDF3FA; /* background section CLASSIC (biru) */
+    --butter: #FEFBE6; /* background section ROAST (kuning) */
+    --peach: #FEF5EB; /* background section WARM (peach/ungu muda) */
+
+    /* Gold accent — warna aksen emas untuk garis, label, highlight */
+    --gold: #C9A96E; /* gold utama */
+    --gold-lt: #E8D5B0; /* gold terang (garis dekoratif) */
+    --gold-dk: #9A7340; /* gold gelap (teks di atas putih) */
+
+    /* Text colors */
+    --charcoal: #2C2420; /* teks utama */
+    --mid: #7A6550; /* teks sekunder */
+    --muted: #B0A090; /* teks tersier / placeholder */
+
+    /* Pastel product colors — digunakan untuk border, tag, dashed line harga
+       Nilai lengkap ada di app.jsx di objek setiap produk */
+    --pastel-pink: #f2619c;
+    --pastel-blue: #93abd9;
+    --pastel-yellow: #ede986;
+    --pastel-peach: #e7bef8;
+
+    /* Typography */
+    --ff-serif: 'Cormorant Garamond', serif; /* heading elegan */
+    --ff-body: 'Jost', sans-serif; /* body text */
+}
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ff-body);
+    background: var(--ivory);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+/* ============================================================
+   3. TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+.label-gold {
+    font-family: var(--ff-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.heading-serif {
+    font-family: var(--ff-serif);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.05;
+}
+
+.heading-serif em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+.body-light {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.85;
+}
+
+/* Garis emas dekoratif */
+.gold-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-lt);
+}
+
+/* ============================================================
+   4. NAVBAR
+   ============================================================ */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(253, 250, 245, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(253, 250, 245, 0.97);
+    border-bottom-color: rgba(201, 169, 110, 0.25);
+}
+
+/* CARA MENGGANTI LOGO NAVBAR:
+   Di app.jsx cari <img className="navbar-logo" .../>
+   Ubah src="images/logo-bw.png" ke nama file logo yang diinginkan
+   File logo harus ada di folder images/ */
+.navbar-logo {
+    height: 44px;
+    width: 44px;
+    object-fit: contain;
+    /* Filter ini mengubah logo hitam putih menjadi warna cokelat emas
+       Hapus filter ini jika logo sudah berwarna sesuai */
+    filter: sepia(0.6) saturate(1.2) brightness(0.65);
+}
+
+.navbar-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.navbar-link {
+    font-family: var(--ff-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--mid);
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.navbar-link:hover {
+    color: var(--gold-dk);
+}
+
+.navbar-cta {
+    border: 1px solid var(--gold);
+    color: var(--gold-dk);
+    padding: 0.5rem 1.5rem;
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.navbar-cta:hover {
+    background: var(--gold);
+    color: var(--ivory);
+}
+
+/* ============================================================
+   5. HERO SECTION
+   ============================================================ */
+
+.hero {
+    min-height: 100vh;
+    background: var(--ivory);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lingkaran dekoratif pastel di background hero */
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-blob-1 {
+    top: -10%;
+    right: -5%;
+    width: 50vw;
+    height: 50vw;
+    background: rgba(242, 97, 156, 0.12); /* pink pastel */
+}
+
+.hero-blob-2 {
+    bottom: -15%;
+    left: -8%;
+    width: 40vw;
+    height: 40vw;
+    background: rgba(147, 171, 217, 0.12); /* biru pastel */
+}
+
+.hero-blob-3 {
+    top: 40%;
+    left: 45%;
+    width: 25vw;
+    height: 25vw;
+    background: rgba(237, 233, 134, 0.1); /* kuning pastel */
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 10rem 3rem 5rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.hero-eyebrow {
+    font-family: var(--ff-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+.hero-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+}
+
+.hero-desc {
+    font-family: var(--ff-serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--mid);
+    line-height: 1.9;
+    max-width: 420px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--charcoal);
+    color: var(--ivory);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.btn-outline {
+    border: 1px solid var(--gold-lt);
+    color: var(--gold-dk);
+    padding: 0.85rem 2.2rem;
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+/* Bottle illustration di hero */
+.hero-bottles {
+    position: relative;
+    height: 520px;
+}
+
+.hero-bottle {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border-radius: 999px;
+    transition: transform 0.3s ease;
+}
+
+.hero-bottle:hover {
+    transform: translateY(-8px) !important;
+}
+
+.hero-bottle-cap {
+    position: absolute;
+    top: -14px;
+    width: 32px;
+    height: 16px;
+    background: rgba(253, 250, 245, 0.95);
+    border-radius: 3px;
+}
+
+.hero-bottle-name {
+    font-family: var(--ff-serif);
+    font-weight: 500;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 0.04em;
+}
+
+.hero-bottle-divider {
+    width: 28px;
+    height: 1px;
+}
+
+.hero-bottle-sub {
+    font-family: var(--ff-body);
+    font-size: 0.48rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.hero-strip {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-strip-label {
+    font-family: var(--ff-serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+}
+
+.hero-strip-item {
+    font-family: var(--ff-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   6. ABOUT SECTION
+   ============================================================ */
+
+.about {
+    background: var(--white);
+    padding: 8rem 3rem;
+}
+
+.about-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+}
+
+/* Kotak kiri berisi logo + quote */
+.about-logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 3rem;
+    background: var(--cream);
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+}
+
+/* Garis sudut dekoratif */
+.about-logo-box::before,
+.about-logo-box::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 1px;
+    background: var(--gold-lt);
+}
+
+.about-logo-box::before {
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.about-logo-box::after {
+    bottom: 1.5rem;
+    left: 1.5rem;
+}
+
+/* CARA MENGGANTI LOGO DI ABOUT US:
+   Di app.jsx cari <img className="about-logo" .../>
+   Ubah src="images/logo-bw.png" ke file yang diinginkan
+   Ukuran ditentukan oleh width/height di bawah */
+.about-logo {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: sepia(0.3) saturate(0.8) brightness(0.9);
+}
+
+.about-quote {
+    font-family: var(--ff-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-dk);
+    line-height: 1.9;
+}
+
+.about-quote-divider {
+    width: 30px;
+    height: 1px;
+    background: var(--gold-lt);
+    margin: 1.5rem auto;
+}
+
+.about-est {
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+/* Konten cerita kanan */
+.about-story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.about-story-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.about-story-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+/* ============================================================
+   7. PRODUCTS SECTION
+   ============================================================ */
+
+.products {
+    background: var(--ivory);
+    padding-top: 7rem;
+}
+
+.products-header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 3rem 3.5rem;
+}
+
+.products-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.05;
+}
+
+.products-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+/* Satu row produk (zigzag) */
+.product-row {
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.product-row-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+}
+
+/* ── Sisi botol ── */
+.product-bottle-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-bottle-circle {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+}
+
+.product-bottle {
+    position: relative;
+    z-index: 1;
+    width: 125px;
+    height: 350px;
+    border-radius: 62px 62px 52px 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.product-bottle-cap {
+    position: absolute;
+    top: -15px;
+    width: 36px;
+    height: 18px;
+    background: rgba(253, 250, 245, 0.95);
+    border-radius: 3px;
+}
+
+.product-bottle-name {
+    font-family: var(--ff-serif);
+    font-weight: 500;
+    font-size: 2.8rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.03em;
+}
+
+.product-bottle-line {
+    width: 32px;
+    height: 1px;
+}
+
+.product-bottle-sub {
+    font-family: var(--ff-body);
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.product-tagline {
+    position: absolute;
+    bottom: 2.5rem;
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 0.88rem;
+    text-align: center;
+    padding: 0 2.5rem;
+    line-height: 1.6;
+}
+
+/* ── Sisi info ── */
+.product-info-side {
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-badge {
+    display: inline-block;
+    align-self: flex-start;
+    border-bottom: 1px solid transparent;
+    color: var(--gold-dk);
+    font-family: var(--ff-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+}
+
+.product-name {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+}
+
+.product-subtitle {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--gold-dk);
+    margin-top: 0.3rem;
+    margin-bottom: 1.25rem;
+}
+
+.product-desc {
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.85;
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+}
+
+.product-ingredients {
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1.75rem;
+}
+
+/* Tabel harga */
+.product-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    max-width: 340px;
+}
+
+.product-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+}
+
+.product-price-qty {
+    font-family: var(--ff-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+}
+
+.product-price-val {
+    font-family: var(--ff-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--charcoal);
+}
+
+.btn-order {
+    align-self: flex-start;
+    background: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+    padding: 0.7rem 1.75rem;
+    cursor: pointer;
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: all 0.25s;
+}
+
+.btn-order:hover {
+    background: var(--charcoal);
+    color: var(--ivory);
+}
+
+/* ── Modal Detail Produk ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 36, 32, 0.55);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+}
+
+.modal-box {
+    background: var(--white);
+    max-width: 780px;
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+/* ── Kolom foto di modal ──
+   CARA MENGGANTI FOTO PRODUK DI MODAL:
+   Di app.jsx cari array `products[]`, di setiap objek ada field:
+     photo: "images/foto-warm.jpg"
+   Ganti nilai tersebut dengan path foto di folder images/
+   Contoh: photo: "images/foto-produk-warm.png"
+   Foto akan tampil di kolom kiri modal detail produk
+   Ukuran ideal: 400×600px atau rasio portrait 2:3 */
+.modal-photo-side {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+}
+
+.modal-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Placeholder kalau foto belum ada */
+.modal-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 400px;
+}
+
+.modal-photo-bottle {
+    width: 110px;
+    height: 300px;
+    border-radius: 55px 55px 46px 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    position: relative;
+}
+
+.modal-photo-bottle-cap {
+    position: absolute;
+    top: -13px;
+    width: 32px;
+    height: 15px;
+    background: rgba(253, 250, 245, 0.95);
+    border-radius: 3px;
+}
+
+/* ── Kolom info di modal ── */
+.modal-info-side {
+    padding: 2.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    z-index: 1;
+    padding: 0.25rem 0.5rem;
+}
+
+.modal-close:hover {
+    color: var(--charcoal);
+}
+
+.modal-badge {
+    font-family: var(--ff-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.modal-name {
+    font-family: var(--ff-serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+}
+
+.modal-subtitle {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    color: var(--gold-dk);
+    margin-top: 0.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-desc {
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.modal-ingredients {
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.5rem;
+}
+
+.modal-pricing {
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+}
+
+.modal-price-qty {
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    color: var(--mid);
+}
+
+.modal-price-val {
+    font-family: var(--ff-serif);
+    font-size: 0.95rem;
+    color: var(--charcoal);
+}
+
+.modal-cta {
+    display: block;
+    text-align: center;
+    background: var(--charcoal);
+    color: var(--ivory);
+    padding: 0.9rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: auto;
+}
+
+.modal-cta:hover {
+    opacity: 0.85;
+}
+
+/* ============================================================
+   8. SERVICE SECTION
+   ============================================================ */
+
+.service {
+    background: var(--blush);
+    padding: 8rem 3rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.service-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.service-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.service-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.05;
+}
+
+.service-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.service-card {
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.service-number {
+    font-family: var(--ff-serif);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--gold-lt);
+    line-height: 1;
+}
+
+.service-label {
+    font-family: var(--ff-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--charcoal);
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.service-divider {
+    width: 24px;
+    height: 1px;
+    background: var(--gold-lt);
+}
+
+.service-desc {
+    font-family: var(--ff-body);
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.75;
+}
+
+/* ============================================================
+   9. EVENTS SECTION
+   ============================================================ */
+
+.events {
+    background: var(--ivory);
+    padding: 8rem 3rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.12);
+}
+
+.events-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.events-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.05;
+    margin-bottom: 4rem;
+}
+
+.events-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(201, 169, 110, 0.1);
+}
+
+.event-card {
+    padding: 3.5rem 3rem;
+}
+
+.event-line {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+}
+
+.event-name {
+    font-family: var(--ff-serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-bottom: 1.25rem;
+}
+
+.event-desc {
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.85;
+}
+
+/* ============================================================
+   10. CONTACT SECTION
+   ============================================================ */
+
+.contact {
+    background: var(--cream);
+    padding: 8rem 3rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+}
+
+.contact-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+}
+
+.contact-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.05;
+    margin-bottom: 2rem;
+}
+
+.contact-title em {
+    font-style: italic;
+    color: var(--gold-dk);
+}
+
+.contact-info-row {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
+}
+
+.contact-info-key {
+    font-family: var(--ff-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+}
+
+.contact-info-val {
+    font-family: var(--ff-serif);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--charcoal);
+}
+
+/* Form fields */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-family: var(--ff-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    color: var(--charcoal);
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    transition: border-color 0.2s;
+}
+
+.form-input:focus {
+    border-color: var(--gold);
+}
+
+.form-select {
+    appearance: none;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    transition: border-color 0.2s;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    border-color: var(--gold);
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    color: var(--charcoal);
+    font-family: var(--ff-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+.form-textarea:focus {
+    border-color: var(--gold);
+}
+
+.btn-submit {
+    background: var(--charcoal);
+    color: var(--ivory);
+    padding: 1rem 2.2rem;
+    border: none;
+    cursor: pointer;
+    font-family: var(--ff-body);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+    opacity: 0.85;
+}
+
+.btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.contact-success {
+    text-align: center;
+    padding: 5rem 2rem;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.contact-success-label {
+    font-family: var(--ff-serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.contact-success-title {
+    font-family: var(--ff-serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+}
+
+.contact-success-note {
+    font-family: var(--ff-body);
+    font-size: 0.83rem;
+    font-weight: 300;
+    color: var(--mid);
+    margin-top: 1rem;
+}
+
+/* ============================================================
+   11. FOOTER
+   ============================================================ */
+
+.footer {
+    background: var(--white);
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+    padding: 4rem 3rem;
+}
+
+.footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* CARA MENGGANTI LOGO FOOTER:
+   Di app.jsx cari <img className="footer-logo" .../>
+   Ubah src="images/logo-pink.png" ke file yang diinginkan
+   File logo harus ada di folder images/
+   Ukuran ditentukan oleh width/height di bawah */
+.footer-logo {
+    height: 72px;
+    width: 72px;
+    object-fit: contain;
+}
+
+.footer-links {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--mid);
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: var(--gold-dk);
+}
+
+.footer-contact {
+    text-align: right;
+}
+
+.footer-email {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--gold-dk);
+}
+
+.footer-location {
+    font-family: var(--ff-body);
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(201, 169, 110, 0.12);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-tagline {
+    font-family: var(--ff-serif);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--muted);
+}
+
+.footer-copy {
+    font-family: var(--ff-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+/* ============================================================
+   12. ANIMATIONS & TRANSITIONS
+   ============================================================ */
+
+/* Semua transisi halus untuk hover states */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

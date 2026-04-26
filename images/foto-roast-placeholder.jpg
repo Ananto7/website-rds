@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600" viewBox="0 0 400 600">
+  <rect width="400" height="600" fill="#ede986"/>
+  <text x="200" y="260" font-family="serif" font-size="56" font-weight="bold" fill="#5C4800" text-anchor="middle">ROAST.</text>
+  <text x="200" y="310" font-family="sans-serif" font-size="18" fill="#5C480080" text-anchor="middle">Almond Roast</text>
+  <text x="200" y="380" font-family="sans-serif" font-size="12" fill="#5C480050" text-anchor="middle">Ganti dengan foto produk</text>
+  <text x="200" y="400" font-family="sans-serif" font-size="12" fill="#5C480050" text-anchor="middle">images/foto-roast.jpg</text>
+</svg>
