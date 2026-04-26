@@ -55,8 +55,8 @@ const products = [
     name: "COAST.",
     subtitle: "Coconut Latte",
     tagline: "Tropical vibes dalam setiap tegukan",
-    description: "Espresso berpadu dengan kelapa segar yang memberikan nuansa tropis ringan dan menyegarkan. Pilihan unik untuk tamu yang ingin sesuatu yang berbeda.",
-    details: "Espresso · Coconut Milk · Fresh Milk",
+    description: "Espresso berpadu dengan Coconut Milk yang memberikan nuansa tropis ringan dan menyegarkan. Pilihan unik untuk tamu yang ingin sesuatu yang berbeda.",
+    details: "Espresso · Coconut Milk · Sweetened Condensed Milk",
     pricing: [
       { qty: "50 PCS",  price: "Rp 550.000" },
       { qty: "100 PCS", price: "Rp 1.000.000" },
@@ -77,7 +77,7 @@ const products = [
     name: "WARM.",
     subtitle: "Aren Latte",
     tagline: "Manis alami dari gula aren asli",
-    description: "Perpaduan espresso segar dengan gula aren pilihan yang menghadirkan rasa manis alami dan aroma karamel lembut. Favorit di setiap wedding dan gathering.",
+    description: "Perpaduan espresso segar dengan gula aren pilihan yang menghadirkan rasa manis alami dan aroma aren. Favorit di setiap wedding dan gathering.",
     details: "Espresso · Fresh Milk · Aren Syrup",
     pricing: [
       { qty: "50 PCS",  price: "Rp 550.000" },
@@ -100,7 +100,7 @@ const products = [
     subtitle: "Creamy Latte",
     tagline: "Klasik yang tak pernah salah",
     description: "Kopi susu klasik dengan tekstur creamy yang sempurna. Cocok untuk semua kalangan dan semua jenis event — pilihan aman yang selalu memuaskan.",
-    details: "Espresso · Fresh Milk · Cream",
+    details: "Espresso · Fresh Milk · Sweetened Condensed Milk",
     pricing: [
       { qty: "50 PCS",  price: "Rp 550.000" },
       { qty: "100 PCS", price: "Rp 1.000.000" },
@@ -121,7 +121,7 @@ const products = [
     name: "ROAST.",
     subtitle: "Almond Roast Latte",
     tagline: "Bold, nutty, unforgettable",
-    description: "Dark roast espresso dengan sentuhan almond syrup yang kaya. Profil rasa bold dan nuttiness yang khas untuk para pencinta kopi sejati.",
+    description: "Dark roast espresso dengan sentuhan roasted almond syrup yang kaya. Profil rasa bold dan nuttiness yang khas untuk para pencinta kopi sejati.",
     details: "Espresso · Fresh Milk · Almond Roast Syrup",
     pricing: [
       { qty: "50 PCS",  price: "Rp 600.000" },
@@ -152,6 +152,7 @@ const services = [
   { label: "Include Ice Cube",       desc: "Es batu disediakan agar kopi tetap dingin dan segar sepanjang event berlangsung." },
   { label: "Max Stand 2 Jam",        desc: "Stand beroperasi maksimal 2 jam demi kesegaran produk yang terjaga optimal." },
   { label: "Free Transport Depok",   desc: "Pengiriman gratis untuk area Depok. Hubungi kami untuk info di luar area." },
+  { label: "Include Barista", desc: "Siap membantu penyajian dan memastikan setiap tamu mendapatkan pengalaman menikmati kopi yang maksimal."}
 ];
 
 /* Service card backgrounds — index 0-3 sesuai urutan services[] */
@@ -160,6 +161,7 @@ const serviceBgs = [
   "#EDF3FA",      /* Ice Cube — biru sky */
   "#FFFFFF",      /* Stand    — putih bersih */
   "#FEFBE6",      /* Transport— kuning butter */
+  "#EDF3FA",      /* Ice Cube — biru sky */
 ];
 
 
