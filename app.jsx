@@ -839,12 +839,12 @@ function Events() {
    └──────────────────────────────────────────────────────────┘
 
    ── GANTI NILAI INI dengan ID Formspree Anda ── */
-const FORMSPREE_ID = "xrejeakr";  /* contoh: "xyzabc123" */
+const FORMSPREE_ID = "REPLACE_WITH_YOUR_ID";  /* contoh: "xyzabc123" */
 /* ── ^^^ JANGAN sertakan https://formspree.io/f/ — hanya ID-nya saja ── */
 
 
 function Contact() {
-    const [form, setForm] = useState({name: "", email: "", event: "", message: ""});
+    const [form, setForm] = useState({name: "", email: "", whatsapp: "", event: "", message: ""});
     const [status, setStatus] = useState("");  /* "" | "sending" | "sent" | "error" */
     const [errorMsg, setErrorMsg] = useState("");
 
@@ -871,6 +871,7 @@ function Contact() {
                     /* Field-field ini akan jadi isi email yang Anda terima */
                     name: form.name,
                     email: form.email,
+                    whatsapp: form.whatsapp,
                     event: form.event,
                     message: form.message,
                     /* _subject mengubah subject email yang masuk ke Gmail Anda */
@@ -882,7 +883,7 @@ function Contact() {
 
             if (response.ok) {
                 setStatus("sent");
-                setForm({name: "", email: "", event: "", message: ""});  /* reset form */
+                setForm({name: "", email: "", whatsapp: "", event: "", message: ""});  /* reset form */
             } else {
                 /* Coba ambil pesan error dari Formspree */
                 const data = await response.json().catch(() => ({}));
@@ -979,6 +980,21 @@ function Contact() {
                                     className="form-input"
                                     value={form.email}
                                     onChange={e => setForm(p => ({...p, email: e.target.value}))}
+                                />
+                            </div>
+                            <div>
+                                <label className="form-label">Nomor WhatsApp</label>
+                                <input
+                                    type="tel" required
+                                    placeholder="08xx-xxxx-xxxx atau +62 8xx"
+                                    className="form-input"
+                                    value={form.whatsapp}
+                                    onChange={e => setForm(p => ({...p, whatsapp: e.target.value}))}
+                                    /* Pattern: terima 08xx, +628xx, atau 628xx, panjang 9-15 digit
+                                       Karakter -, spasi, dan ( ) diperbolehkan untuk readability */
+                                    pattern="^(\+?62|0)[\s\-]?8[1-9][0-9]{1}[\s\-]?[0-9]{3,4}[\s\-]?[0-9]{3,5}$"
+                                    title="Format: 08xx-xxxx-xxxx atau +62 8xx-xxxx-xxxx"
+                                    inputMode="tel"
                                 />
                             </div>
                             <div>
