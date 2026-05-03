@@ -750,15 +750,16 @@ select:focus {
     font-family: var(--ff-body);
     font-size: 0.95rem;
     font-weight: 400;
-    color: var(--mid);
+    color: var(--charcoal);
     letter-spacing: 0.05em;
 }
 
 .product-price-val {
-    font-family: var(--ff-serif);
-    font-size: 1.15rem;
+    font-family: var(--ff-body);
+    font-size: 0.95rem;
     font-weight: 400;
     color: var(--charcoal);
+    letter-spacing: 0.05em;
 }
 
 .btn-order {
@@ -947,21 +948,35 @@ select:focus {
 
 .modal-close {
     position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    background: none;
-    border: none;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(44, 36, 32, 0.1);
     cursor: pointer;
     font-family: var(--ff-body);
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    z-index: 1;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    color: var(--charcoal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 10;
+    padding: 0.5rem 0.95rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(44, 36, 32, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .modal-close:hover {
-    color: var(--charcoal);
+    background: var(--charcoal);
+    color: var(--ivory);
+    border-color: var(--charcoal);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(44, 36, 32, 0.25);
 }
 
 .modal-badge {
@@ -1025,13 +1040,17 @@ select:focus {
 .modal-price-qty {
     font-family: var(--ff-body);
     font-size: 0.95rem;
-    color: var(--mid);
+    font-weight: 400;
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
 }
 
 .modal-price-val {
-    font-family: var(--ff-serif);
-    font-size: 1.1rem;
+    font-family: var(--ff-body);
+    font-size: 0.95rem;
+    font-weight: 400;
     color: var(--charcoal);
+    letter-spacing: 0.05em;
 }
 
 .modal-cta {
@@ -1660,23 +1679,67 @@ select:focus {
 
     /* Hero bottles — diperkecil + spread di mobile */
     .hero-bottles {
-        height: 320px;
+        height: 340px;
         margin-top: 1rem;
     }
 
     .hero-bottle {
-        width: 64px !important;
-        height: 175px !important;
+        width: 70px !important;
+        height: 195px !important;
     }
 
+    /* Tulisan utama (COAST., WARM., dll) — dikecilkan agar muat */
     .hero-bottle-name {
-        font-size: 1.4rem !important;
+        font-size: 1.15rem !important;
+        letter-spacing: 0.02em !important;
+    }
+
+    /* Label varian bawah (COCONUT LATTE) — dikecilkan */
+    .hero-bottle-sub {
+        font-size: 0.4rem !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    /* Garis pembatas botol */
+    .hero-bottle-divider {
+        width: 18px !important;
     }
 
     .hero-bottle-cap {
         width: 22px;
         height: 12px;
         top: -10px;
+    }
+
+    /* Botol ilustrasi di product zigzag (saat foto belum tersedia) */
+    .product-bottle {
+        width: 100px;
+        height: 280px;
+    }
+
+    .product-bottle-name {
+        font-size: 1.9rem;
+        letter-spacing: 0.02em;
+    }
+
+    .product-bottle-sub {
+        font-size: 0.48rem;
+        letter-spacing: 0.1em;
+    }
+
+    .product-bottle-line {
+        width: 24px;
+    }
+
+    .product-bottle-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .product-tagline {
+        font-size: 0.78rem;
+        bottom: 1.5rem;
+        padding: 0 1.5rem;
     }
 
     .hero-strip {
@@ -1819,6 +1882,14 @@ select:focus {
     .modal-photo-side {
         min-height: 240px;
         max-height: 280px;
+    }
+
+    /* Tombol close di mobile — sedikit lebih besar agar mudah ditap */
+    .modal-close {
+        top: 0.85rem;
+        right: 0.85rem;
+        padding: 0.55rem 1rem;
+        font-size: 0.72rem;
     }
 
     .modal-info-side {
