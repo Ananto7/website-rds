@@ -315,12 +315,12 @@ select:focus {
 
 .hero-desc {
     font-family: var(--ff-serif);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 300;
     font-style: italic;
     color: var(--mid);
     line-height: 1.9;
-    max-width: 420px;
+    max-width: 460px;
 }
 
 .hero-buttons {
@@ -386,13 +386,16 @@ select:focus {
     transform: translateY(-8px) !important;
 }
 
+/* Tutup botol — sengaja dibuat abu-abu lembut agar kontras
+   dengan background ivory dan tidak "menyatu" dengan latar */
 .hero-bottle-cap {
     position: absolute;
     top: -14px;
     width: 32px;
     height: 16px;
-    background: rgba(253, 250, 245, 0.95);
+    background: linear-gradient(180deg, #C9C2B5 0%, #B8B0A2 100%);
     border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .hero-bottle-name {
@@ -588,7 +591,8 @@ select:focus {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 480px;
+    min-height: 520px;
+    align-items: stretch;
 }
 
 /* ── Sisi botol ── */
@@ -599,6 +603,7 @@ select:focus {
     padding: 4rem;
     position: relative;
     overflow: hidden;
+    min-height: 520px;
 }
 
 .product-bottle-circle {
@@ -626,8 +631,9 @@ select:focus {
     top: -15px;
     width: 36px;
     height: 18px;
-    background: rgba(253, 250, 245, 0.95);
+    background: linear-gradient(180deg, #C9C2B5 0%, #B8B0A2 100%);
     border-radius: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .product-bottle-name {
@@ -666,10 +672,11 @@ select:focus {
 
 /* ── Sisi info ── */
 .product-info-side {
-    padding: 4rem 3.5rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 520px;
 }
 
 .product-badge {
@@ -697,7 +704,7 @@ select:focus {
 .product-subtitle {
     font-family: var(--ff-serif);
     font-style: italic;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
     font-weight: 300;
     color: var(--gold-dk);
     margin-top: 0.3rem;
@@ -706,17 +713,17 @@ select:focus {
 
 .product-desc {
     font-family: var(--ff-body);
-    font-size: 0.88rem;
+    font-size: 0.98rem;
     font-weight: 300;
     color: var(--mid);
     line-height: 1.85;
-    max-width: 400px;
+    max-width: 440px;
     margin-bottom: 1.5rem;
 }
 
 .product-ingredients {
     font-family: var(--ff-body);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     letter-spacing: 0.08em;
     color: var(--muted);
     margin-bottom: 1.75rem;
@@ -741,7 +748,7 @@ select:focus {
 
 .product-price-qty {
     font-family: var(--ff-body);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 400;
     color: var(--mid);
     letter-spacing: 0.05em;
@@ -749,7 +756,7 @@ select:focus {
 
 .product-price-val {
     font-family: var(--ff-serif);
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: 400;
     color: var(--charcoal);
 }
@@ -772,6 +779,83 @@ select:focus {
 .btn-order:hover {
     background: var(--charcoal);
     color: var(--ivory);
+}
+
+/* ============================================================
+   TAB SELECTOR — BOTTLE / CUP
+   Dirancang agar JELAS terlihat sebagai tombol interaktif:
+   - Background terang (bukan transparan) → kelihatan ada area klik
+   - Border + shadow halus → memberi kesan "raised button"
+   - Hover state yang jelas
+   - Active state dengan kontras tinggi
+   ============================================================ */
+
+.concept-toggle-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.concept-toggle-label {
+    font-family: var(--ff-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.concept-toggle {
+    display: inline-flex;
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(44, 36, 32, 0.06);
+}
+
+.concept-tab {
+    padding: 0.7rem 1.6rem;
+    border: none;
+    cursor: pointer;
+    font-family: var(--ff-body);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: transparent;
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 3px;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.concept-tab:hover {
+    background: rgba(201, 169, 110, 0.08);
+    color: var(--charcoal);
+}
+
+.concept-tab.active {
+    background: var(--charcoal);
+    color: var(--ivory);
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(44, 36, 32, 0.18);
+}
+
+.concept-tab .tab-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.concept-tab .tab-sub {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    margin-left: 0.25rem;
 }
 
 /* ── Modal Detail Produk ── */
@@ -848,8 +932,9 @@ select:focus {
     top: -13px;
     width: 32px;
     height: 15px;
-    background: rgba(253, 250, 245, 0.95);
+    background: linear-gradient(180deg, #C9C2B5 0%, #B8B0A2 100%);
     border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* ── Kolom info di modal ── */
@@ -906,7 +991,7 @@ select:focus {
 
 .modal-desc {
     font-family: var(--ff-body);
-    font-size: 0.88rem;
+    font-size: 0.98rem;
     font-weight: 300;
     color: var(--mid);
     line-height: 1.8;
@@ -915,7 +1000,7 @@ select:focus {
 
 .modal-ingredients {
     font-family: var(--ff-body);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     color: var(--muted);
     letter-spacing: 0.06em;
     margin-bottom: 1.5rem;
@@ -939,13 +1024,13 @@ select:focus {
 
 .modal-price-qty {
     font-family: var(--ff-body);
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     color: var(--mid);
 }
 
 .modal-price-val {
     font-family: var(--ff-serif);
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: var(--charcoal);
 }
 
@@ -1024,7 +1109,7 @@ select:focus {
 
 .service-label {
     font-family: var(--ff-body);
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     color: var(--charcoal);
     text-transform: uppercase;
@@ -1040,7 +1125,7 @@ select:focus {
 
 .service-desc {
     font-family: var(--ff-body);
-    font-size: 0.83rem;
+    font-size: 0.92rem;
     font-weight: 300;
     color: var(--mid);
     line-height: 1.75;
@@ -1105,7 +1190,7 @@ select:focus {
 
 .event-desc {
     font-family: var(--ff-body);
-    font-size: 0.88rem;
+    font-size: 0.98rem;
     font-weight: 300;
     color: var(--mid);
     line-height: 1.85;
@@ -1389,4 +1474,469 @@ select:focus {
 /* Semua transisi halus untuk hover states */
 * {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ============================================================
+   13. RESPONSIVE DESIGN
+   ============================================================
+   Breakpoints:
+   - Mobile  : ≤ 640px   (HP)
+   - Tablet  : 641-1024px (Tab / iPad)
+   - Laptop+ : ≥ 1025px   (default — sudah dihandle di atas)
+   ============================================================ */
+
+
+/* ── TABLET (≤ 1024px) ───────────────────────────────────── */
+@media (max-width: 1024px) {
+
+    /* NAVBAR */
+    .navbar {
+        padding: 0.85rem 1.5rem;
+    }
+
+    .navbar-links {
+        gap: 1.25rem;
+    }
+
+    .navbar-link {
+        font-size: 0.7rem;
+    }
+
+    .navbar-cta {
+        padding: 0.45rem 1rem;
+        font-size: 0.68rem;
+    }
+
+    /* HERO */
+    .hero-inner {
+        padding: 8rem 2rem 4rem;
+    }
+
+    .hero-grid {
+        gap: 3rem;
+    }
+
+    .hero-bottles {
+        height: 440px;
+    }
+
+    .hero-bottle {
+        width: 88px !important;
+        height: 240px !important;
+    }
+
+    /* ABOUT */
+    .about {
+        padding: 6rem 2rem;
+    }
+
+    .about-inner {
+        gap: 4rem;
+    }
+
+    .about-logo-box {
+        padding: 3rem 2rem;
+    }
+
+    /* PRODUCTS */
+    .product-row-inner {
+        min-height: 460px;
+    }
+
+    .product-bottle-side,
+    .product-info-side {
+        padding: 3rem 2.5rem;
+        min-height: 460px;
+    }
+
+    /* SERVICE — 5 kolom jadi lebih ringkas */
+    .service {
+        padding: 6rem 2rem;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* EVENTS */
+    .events {
+        padding: 6rem 2rem;
+    }
+
+    .event-card {
+        padding: 2.5rem 2rem;
+    }
+
+    /* CONTACT */
+    .contact {
+        padding: 6rem 2rem;
+    }
+
+    .contact-inner {
+        gap: 4rem;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 3rem 2rem;
+    }
+
+    .footer-links {
+        gap: 1.75rem;
+    }
+}
+
+
+/* ── MOBILE (≤ 640px) ───────────────────────────────────── */
+@media (max-width: 640px) {
+
+    /* NAVBAR — hide links, keep logo + CTA */
+    .navbar {
+        padding: 0.75rem 1.25rem;
+    }
+
+    .navbar-logo {
+        height: 38px;
+        width: 38px;
+    }
+
+    .navbar-links {
+        gap: 0.75rem;
+    }
+
+    /* Sembunyikan link teks di mobile, tampilkan hanya CTA */
+    .navbar-link {
+        display: none;
+    }
+
+    .navbar-cta {
+        padding: 0.45rem 1rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+    }
+
+    /* HERO — stack vertikal */
+    .hero {
+        min-height: auto;
+    }
+
+    .hero-inner {
+        padding: 7rem 1.25rem 3rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 11vw, 3.5rem);
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        flex: 1;
+        text-align: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.68rem;
+        letter-spacing: 0.15em;
+    }
+
+    /* Hero bottles — diperkecil + spread di mobile */
+    .hero-bottles {
+        height: 320px;
+        margin-top: 1rem;
+    }
+
+    .hero-bottle {
+        width: 64px !important;
+        height: 175px !important;
+    }
+
+    .hero-bottle-name {
+        font-size: 1.4rem !important;
+    }
+
+    .hero-bottle-cap {
+        width: 22px;
+        height: 12px;
+        top: -10px;
+    }
+
+    .hero-strip {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-strip-label {
+        font-size: 0.8rem;
+        width: 100%;
+    }
+
+    .hero-strip-item {
+        font-size: 0.62rem;
+        letter-spacing: 0.2em;
+    }
+
+    /* ABOUT — stack vertikal */
+    .about {
+        padding: 4rem 1.25rem;
+    }
+
+    .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about-logo-box {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .about-logo {
+        width: 120px !important;
+    }
+
+    /* PRODUCTS */
+    #produk {
+        padding-top: 4rem !important;
+    }
+
+    #produk > div:first-child {
+        padding: 0 1.25rem 2rem !important;
+    }
+
+    .products-title {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+    }
+
+    /* Header tab — stack vertikal supaya tidak crowded */
+    #produk > div:first-child > div:nth-child(2) {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 1.5rem !important;
+    }
+
+    .concept-toggle-wrap {
+        width: 100%;
+    }
+
+    .concept-toggle {
+        width: 100%;
+    }
+
+    .concept-tab {
+        flex: 1;
+        justify-content: center;
+        padding: 0.7rem 0.5rem;
+        font-size: 0.72rem;
+    }
+
+    .concept-tab .tab-sub {
+        display: none;
+    }
+
+    /* Product row — stack vertikal */
+    .product-row-inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    /* PENTING: di mobile selalu botol di atas, info di bawah
+       Override `order` yang diset inline di JSX */
+    .product-bottle-side {
+        order: 1 !important;
+        min-height: 320px;
+        padding: 2.5rem 1.5rem !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(201, 169, 110, 0.2) !important;
+    }
+
+    .product-info-side {
+        order: 2 !important;
+        min-height: auto;
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    .product-bottle-side img {
+        min-height: 280px !important;
+        max-height: 380px;
+    }
+
+    .product-bottle {
+        width: 95px;
+        height: 260px;
+    }
+
+    .product-bottle-name {
+        font-size: 2rem;
+    }
+
+    .product-name {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .product-desc {
+        font-size: 0.92rem;
+        max-width: 100%;
+    }
+
+    .product-pricing {
+        max-width: 100%;
+    }
+
+    /* MODAL — full width di mobile */
+    .modal-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .modal-box {
+        grid-template-columns: 1fr;
+        max-height: 95vh;
+        max-width: 100%;
+        overflow-y: auto;
+    }
+
+    .modal-photo-side {
+        min-height: 240px;
+        max-height: 280px;
+    }
+
+    .modal-info-side {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .modal-name {
+        font-size: 2.2rem;
+    }
+
+    /* SERVICE — 1 kolom (atau 2) */
+    .service {
+        padding: 4rem 1.25rem;
+    }
+
+    .service-header {
+        margin-bottom: 3rem;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* EVENTS — 1 kolom */
+    .events {
+        padding: 4rem 1.25rem;
+    }
+
+    .events-title {
+        margin-bottom: 2.5rem;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+
+    .event-card {
+        padding: 2.5rem 1.75rem;
+    }
+
+    .event-name {
+        font-size: 2rem;
+    }
+
+    /* CONTACT — stack vertikal */
+    .contact {
+        padding: 4rem 1.25rem;
+    }
+
+    .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .contact-title {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+    }
+
+    .contact-success {
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-success-title {
+        font-size: 2.2rem;
+    }
+
+    /* FOOTER — stack */
+    .footer {
+        padding: 3rem 1.25rem;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-links {
+        justify-content: center;
+        gap: 1.25rem;
+    }
+
+    .footer-contact {
+        text-align: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+}
+
+
+/* ── SMALL MOBILE (≤ 380px) — penyesuaian untuk HP kecil ──── */
+@media (max-width: 380px) {
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+    }
+
+    .footer-links {
+        gap: 0.85rem;
+    }
+
+    .footer-link {
+        font-size: 0.65rem;
+    }
 }

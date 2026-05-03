@@ -63,7 +63,7 @@ const products = [
         textOn: "#7A0030",
         bgRow: "#FFFFFF",
         bottle: {
-            details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 150l",
+            details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
                 {qty: "100 PCS", price: "Rp 1.000.000"},
@@ -333,7 +333,7 @@ function Hero() {
             <div className="hero-inner">
                 <div className="hero-grid">
                     <div>
-                        <p className="hero-eyebrow">Bottled Coffee Experience</p>
+                        <p className="hero-eyebrow">Coffee Experience</p>
                         <h1 className="hero-title">A Sip of<br/><em>Something</em><br/>Beautiful.</h1>
                         <div className="hero-divider"/>
                         <p className="hero-desc">
@@ -656,42 +656,28 @@ function Products({concept, setConcept}) {
                 }}>
                     <h2 className="products-title">Four Signature<br/><em>Flavours.</em></h2>
 
-                    {/* ── TAB BOTTLE / CUP ── */}
-                    <div style={{
-                        display: "flex",
-                        gap: "0",
-                        border: "1px solid rgba(201,169,110,0.3)",
-                        alignSelf: "flex-end",
-                        marginBottom: "0.25rem"
-                    }}>
-                        {[
-                            {key: "bottle", label: "🍾 Bottle", sub: "150ml"},
-                            {key: "cup", label: "☕ Cup", sub: "100ml"},
-                        ].map(tab => (
-                            <button
-                                key={tab.key}
-                                onClick={() => setConcept(tab.key)}
-                                style={{
-                                    padding: "0.75rem 2rem",
-                                    border: "none",
-                                    cursor: "pointer",
-                                    fontFamily: "var(--ff-body)",
-                                    fontSize: "0.75rem",
-                                    letterSpacing: "0.15em",
-                                    textTransform: "uppercase",
-                                    fontWeight: concept === tab.key ? 500 : 400,
-                                    background: concept === tab.key ? "var(--charcoal)" : "transparent",
-                                    color: concept === tab.key ? "var(--ivory)" : "var(--mid)",
-                                    display: "flex", flexDirection: "column", alignItems: "center", gap: "0.15rem",
-                                    transition: "all 0.25s",
-                                    borderRight: tab.key === "bottle" ? "1px solid rgba(201,169,110,0.3)" : "none",
-                                }}
-                            >
-                                <span>{tab.label}</span>
-                                <span
-                                    style={{fontSize: "0.6rem", letterSpacing: "0.1em", opacity: 0.6}}>{tab.sub}</span>
-                            </button>
-                        ))}
+                    {/* ── TAB BOTTLE / CUP — sekarang JELAS terlihat sebagai tombol ── */}
+                    <div className="concept-toggle-wrap">
+                        <span className="concept-toggle-label">Pilih Konsep</span>
+                        <div className="concept-toggle" role="tablist" aria-label="Pilih konsep produk">
+                            {[
+                                {key: "bottle", label: "Bottle", sub: "150ml", icon: "🍾"},
+                                {key: "cup", label: "Cup", sub: "100ml", icon: "☕"},
+                            ].map(tab => (
+                                <button
+                                    key={tab.key}
+                                    type="button"
+                                    role="tab"
+                                    aria-selected={concept === tab.key}
+                                    onClick={() => setConcept(tab.key)}
+                                    className={`concept-tab ${concept === tab.key ? "active" : ""}`}
+                                >
+                                    <span className="tab-icon">{tab.icon}</span>
+                                    <span>{tab.label}</span>
+                                    <span className="tab-sub">{tab.sub}</span>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
