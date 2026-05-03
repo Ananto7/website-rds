@@ -839,7 +839,7 @@ function Events() {
    └──────────────────────────────────────────────────────────┘
 
    ── GANTI NILAI INI dengan ID Formspree Anda ── */
-const FORMSPREE_ID = "REPLACE_WITH_YOUR_ID";  /* contoh: "xyzabc123" */
+const FORMSPREE_ID = "xrejeakr";  /* contoh: "xyzabc123" */
 /* ── ^^^ JANGAN sertakan https://formspree.io/f/ — hanya ID-nya saja ── */
 
 
@@ -854,7 +854,7 @@ function Contact() {
         setErrorMsg("");
 
         /* Validasi: pastikan FORMSPREE_ID sudah diisi */
-        if (!FORMSPREE_ID || FORMSPREE_ID === "xrejeakr") {
+        if (!FORMSPREE_ID || FORMSPREE_ID === "REPLACE_WITH_YOUR_ID") {
             setStatus("error");
             setErrorMsg("Form belum disetup. Silakan hubungi langsung via WhatsApp di +62 851-5624-9026.");
             return;
