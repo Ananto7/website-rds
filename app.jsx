@@ -854,7 +854,7 @@ function Contact() {
         setErrorMsg("");
 
         /* Validasi: pastikan FORMSPREE_ID sudah diisi */
-        if (!FORMSPREE_ID || FORMSPREE_ID === "REPLACE_WITH_YOUR_ID") {
+        if (!FORMSPREE_ID || FORMSPREE_ID === "xrejeakr") {
             setStatus("error");
             setErrorMsg("Form belum disetup. Silakan hubungi langsung via WhatsApp di +62 851-5624-9026.");
             return;
