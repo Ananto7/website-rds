@@ -820,36 +820,87 @@ function Events() {
 
 
 /* ============================================================
-   9. CONTACT
+   9. CONTACT — dengan integrasi FORMSPREE
    ============================================================
 
-   Untuk menghubungkan form ke email owner:
-   1. Buat akun di emailjs.com (gratis)
-   2. Ganti blok simulasi `await new Promise(...)` dengan:
+   ┌─ CARA SETUP FORMSPREE (5 menit, GRATIS 50 email/bulan) ─┐
+   │                                                          │
+   │  1. Buka https://formspree.io/register                   │
+   │  2. Daftar pakai email kacamataramah48@gmail.com         │
+   │  3. Verifikasi email (cek inbox Gmail)                   │
+   │  4. Login → klik "+ New form" → beri nama bebas          │
+   │  5. Akan muncul endpoint seperti:                        │
+   │       https://formspree.io/f/xyzabc123                   │
+   │  6. Copy ID setelah /f/  (contoh: xyzabc123)             │
+   │  7. Paste ke variabel FORMSPREE_ID di bawah ↓            │
+   │  8. Email PERTAMA yang masuk akan minta konfirmasi —     │
+   │     cek Gmail dan klik link "Confirm" dari Formspree     │
+   │                                                          │
+   └──────────────────────────────────────────────────────────┘
 
-   import emailjs from 'emailjs-com';
-   await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', form, 'USER_ID');
+   ── GANTI NILAI INI dengan ID Formspree Anda ── */
+const FORMSPREE_ID = "xrejeakr";  /* contoh: "xyzabc123" */
+/* ── ^^^ JANGAN sertakan https://formspree.io/f/ — hanya ID-nya saja ── */
 
-   Atau gunakan Formspree:
-   await fetch('https://formspree.io/f/YOUR_ID', {
-     method: 'POST',
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify(form),
-   });
-   ============================================================ */
 
 function Contact() {
     const [form, setForm] = useState({name: "", email: "", event: "", message: ""});
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("");  /* "" | "sending" | "sent" | "error" */
+    const [errorMsg, setErrorMsg] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setStatus("sending");
+        setErrorMsg("");
 
-        /* GANTI BAGIAN INI dengan EmailJS / Formspree di production */
-        await new Promise(r => setTimeout(r, 1200));
+        /* Validasi: pastikan FORMSPREE_ID sudah diisi */
+        if (!FORMSPREE_ID || FORMSPREE_ID === "REPLACE_WITH_YOUR_ID") {
+            setStatus("error");
+            setErrorMsg("Form belum disetup. Silakan hubungi langsung via WhatsApp di +62 851-5624-9026.");
+            return;
+        }
 
-        setStatus("sent");
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify({
+                    /* Field-field ini akan jadi isi email yang Anda terima */
+                    name: form.name,
+                    email: form.email,
+                    event: form.event,
+                    message: form.message,
+                    /* _subject mengubah subject email yang masuk ke Gmail Anda */
+                    _subject: `RDS Coffee — Inquiry Event ${form.event || ""} dari ${form.name}`,
+                    /* _replyto memungkinkan Anda klik "Reply" dan langsung balas ke pelanggan */
+                    _replyto: form.email,
+                }),
+            });
+
+            if (response.ok) {
+                setStatus("sent");
+                setForm({name: "", email: "", event: "", message: ""});  /* reset form */
+            } else {
+                /* Coba ambil pesan error dari Formspree */
+                const data = await response.json().catch(() => ({}));
+                const msg = data?.errors?.[0]?.message || "Gagal mengirim pesan. Silakan coba lagi.";
+                setStatus("error");
+                setErrorMsg(msg);
+            }
+        } catch (err) {
+            /* Network error / offline */
+            setStatus("error");
+            setErrorMsg("Tidak dapat terhubung. Periksa koneksi internet Anda.");
+        }
+    };
+
+    /* Reset form supaya bisa kirim pesan baru */
+    const resetForm = () => {
+        setStatus("");
+        setErrorMsg("");
     };
 
     return (
@@ -899,6 +950,14 @@ function Contact() {
                             <p className="contact-success-label">Pesan terkirim</p>
                             <p className="contact-success-title">Terima<br/>Kasih.</p>
                             <p className="contact-success-note">Kami akan menghubungimu dalam 1×24 jam.</p>
+                            <button
+                                type="button"
+                                onClick={resetForm}
+                                className="btn-submit"
+                                style={{marginTop: "2rem"}}
+                            >
+                                Kirim Pesan Lain
+                            </button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="form-group">
@@ -946,6 +1005,14 @@ function Contact() {
                                     onChange={e => setForm(p => ({...p, message: e.target.value}))}
                                 />
                             </div>
+
+                            {/* Tampilan error — muncul kalau gagal kirim */}
+                            {status === "error" && (
+                                <div className="form-error">
+                                    <strong>Gagal mengirim:</strong> {errorMsg}
+                                </div>
+                            )}
+
                             <button
                                 type="submit"
                                 className="btn-submit"
@@ -987,7 +1054,7 @@ function Footer() {
           */}
                     <img
                         className="footer-logo"
-                        src="images/logo-pink.png"
+                        src="images/logo-footer.png"
                         alt="RDS Coffee"
                     />
 
