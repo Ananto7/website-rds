@@ -58,10 +58,10 @@ const products = [
         subtitle: "Coconut Latte",
         tagline: "Tropical vibes dalam setiap tegukan",
         description: "Espresso berpadu dengan Coconut Milk yang memberikan nuansa tropis ringan dan menyegarkan. Pilihan unik untuk tamu yang ingin sesuatu yang berbeda.",
-        color: "#f2619c",   /* Warna #f2619c = Pink Coast */
-        bg: "#FEF0F3",
-        textOn: "#7A0030",
-        bgRow: "#FFFFFF",
+        color:  "#7f011e",
+        bg:     "#f9eaed",
+        textOn: "#ffffff",
+        bgRow:  "#ffffff",
         bottle: {
             details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 150ml",
             pricing: [
@@ -70,8 +70,8 @@ const products = [
                 {qty: "200 PCS", price: "Rp 2.000.000"},
             ],
             /* ── GANTI FOTO DI SINI ─────────────────────────────── */
-            photo: "images/foto-coast-detail.png",   /* foto modal detail  */
-            photoOutside: "images/foto-coast-outside.png",  /* foto zigzag row    */
+            photo: "images/foto-bottle-coast.png",   /* foto modal detail  */
+            photoOutside: "images/foto-bottle-coast.png",  /* foto zigzag row    */
         },
 
         cup: {
@@ -81,8 +81,8 @@ const products = [
                 {qty: "200 PCS", price: "Rp 1.100.000"},
             ],
             /* GANTI FOTO CUP — taruh di folder images/ */
-            photo: "images/foto-coast-cup-detail.png",
-            photoOutside: "images/foto-coast-cup-outside.png",
+            photo: "images/foto-cup-detail.png",
+            photoOutside: "images/foto-cup-detail.png",
         }
     },
     {
@@ -92,10 +92,10 @@ const products = [
         tagline: "Manis alami dari gula aren asli",
         description: "Perpaduan espresso segar dengan gula aren pilihan yang menghadirkan rasa manis alami dan aroma aren. Favorit di setiap wedding dan gathering.",
         details: "Espresso · Fresh Milk · Aren Syrup",
-        color: "#e7bef8",   /* Warna #e7bef8 = Purple Warm */
-        bg: "#F8F0FE",
-        textOn: "#5A1A8A",
-        bgRow: "#FBF5FF",
+        color:  "#013880",
+        bg:     "#e8f0fb",
+        textOn: "#ffffff",
+        bgRow:  "#ffffff",
 
         bottle: {
             details: "Espresso · Fresh Milk · Aren Syrup · 150ml",
@@ -104,8 +104,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 1.000.000"},
                 {qty: "200 PCS", price: "Rp 2.000.000"},
             ],
-            photo: "images/foto-warm-detail.png",
-            photoOutside: "images/foto-warm-outside.png",
+            photo: "images/foto-bottle-warm.png",
+            photoOutside: "images/foto-bottle-warm.png",
         },
 
         cup: {
@@ -114,8 +114,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 600.000"},
                 {qty: "200 PCS", price: "Rp 1.100.000"},
             ],
-            photo: "images/foto-warm-cup-detail.png",
-            photoOutside: "images/foto-warm-cup-outside.png",
+            photo: "images/foto-cup-detail.png",
+            photoOutside: "images/foto-cup-detail.png",
         },
     },
     {
@@ -136,8 +136,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 1.000.000"},
                 {qty: "200 PCS", price: "Rp 2.000.000"},
             ],
-            photo: "images/foto-classic-detail.png",
-            photoOutside: "images/foto-classic-outside.png",
+            photo: "images/foto-bottle-classic.png",
+            photoOutside: "images/foto-bottle-classic.png",
         },
 
         cup: {
@@ -146,8 +146,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 600.000"},
                 {qty: "200 PCS", price: "Rp 1.100.000"},
             ],
-            photo: "images/foto-classic-cup-detail.png",
-            photoOutside: "images/foto-classic-cup-outside.png",
+            photo: "images/foto-cup-detail.png",
+            photoOutside: "images/foto-cup-detail.png",
         },
     },
     {
@@ -157,10 +157,10 @@ const products = [
         tagline: "Bold, nutty, unforgettable",
         description: "Dark roast espresso dengan sentuhan roasted almond syrup yang kaya. Profil rasa bold dan nuttiness yang khas untuk para pencinta kopi sejati.",
         details: "Espresso · Fresh Milk · Almond Roast Syrup",
-        color: "#ede986",   /* Warna #ede986 = Kuning Roast */
-        bg: "#FEFBE6",
-        textOn: "#5C4800",
-        bgRow: "#FFFDF0",
+        color:  "#7f011e",
+        bg:     "#f9eaed",
+        textOn: "#ffffff",
+        bgRow:  "#f5f5f5",
 
         bottle: {
             details: "Espresso · Fresh Milk · Almond Roast Syrup · 150ml",
@@ -169,8 +169,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 1.100.000"},
                 {qty: "200 PCS", price: "Rp 2.100.000"},
             ],
-            photo: "images/foto-roast-detail.png",
-            photoOutside: "images/foto-roast-outside.png",
+            photo: "images/foto-bottle-roast.png",
+            photoOutside: "images/foto-bottle-roast.png",
         },
 
         cup: {
@@ -179,8 +179,8 @@ const products = [
                 {qty: "100 PCS", price: "Rp 650.000"},
                 {qty: "200 PCS", price: "Rp 1.200.000"},
             ],
-            photo: "images/foto-roast-cup-detail.png",
-            photoOutside: "images/foto-roast-cup-outside.png",
+            photo: "images/foto-cup-detail.png",
+            photoOutside: "images/foto-cup-detail.png",
         },
     },
 ];
@@ -212,7 +212,7 @@ const serviceBgs = [
     "#FFFFFF",      /* Acrylic  — putih bersih */
     "#EDF3FA",      /* Ice Cube — biru sky */
     "#FFFFFF",      /* Stand    — putih bersih */
-    "#FEFBE6",      /* Transport— kuning butter */
+    "#e8f0fb",      /* Transport— kuning butter */
     "#EDF3FA",      /* Ice Cube — biru sky */
 ];
 
@@ -247,7 +247,7 @@ const serviceData = {
             "#FFFFFF",      /* Acrylic  — putih bersih */
             "#EDF3FA",      /* Ice Cube — biru sky */
             "#FFFFFF",      /* Stand    — putih bersih */
-            "#FEFBE6",      /* Transport— kuning butter */
+            "#e8f0fb",      /* Transport— kuning butter */
             "#EDF3FA",      /* Ice Cube — biru sky */
         ],
     },
@@ -277,7 +277,7 @@ const serviceData = {
             "#FFFFFF",      /* Acrylic  — putih bersih */
             "#EDF3FA",      /* Ice Cube — biru sky */
             "#FFFFFF",      /* Stand    — putih bersih */
-            "#FEFBE6",      /* Transport— kuning butter */
+            "#e8f0fb",      /* Transport— kuning butter */
             "#EDF3FA",      /* Ice Cube — biru sky */
         ],
     },
@@ -308,7 +308,7 @@ function Navbar() {
     }, []);
     return (
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-            <img className="navbar-logo" src="images/logo-bw.png" alt="RDS Coffee"/>
+            <img className="navbar-logo" src="images/logo-icon.png" alt="RDS Coffee Event"/>
             <div className="navbar-links">
                 {[["Produk", "#produk"], ["Service", "#service"], ["Event", "#event"], ["Tentang", "#tentang"], ["Kontak", "#kontak"]].map(([l, h]) => (
                     <a key={l} href={h} className="navbar-link">{l}</a>
@@ -334,7 +334,7 @@ function Hero() {
                 <div className="hero-grid">
                     <div>
                         <p className="hero-eyebrow">Coffee Experience</p>
-                        <h1 className="hero-title">A Sip of<br/><em>Something</em><br/>Beautiful.</h1>
+                        <div className="hero-title-image"><img src="images/logo-header.png" /></div>
                         <div className="hero-divider"/>
                         <p className="hero-desc">
                             Setiap momen spesialmu layak ditemani oleh secangkir kopi terbaik —
@@ -388,7 +388,7 @@ function About() {
         <section id="tentang" className="about">
             <div className="about-inner">
                 <div className="about-logo-box">
-                    <img className="about-logo" src="images/logo-purple.png" alt="RDS Coffee"/>
+                    <img className="about-logo" src="images/logo-icon.png" alt="RDS Coffee"/>
                     <p className="about-quote">"Kami menciptakan kopi bukan hanya untuk diminum, tetapi untuk menjadi
                         bagian dari momen."</p>
                     <div className="about-quote-divider"/>
@@ -1070,8 +1070,8 @@ function Footer() {
           */}
                     <img
                         className="footer-logo"
-                        src="images/logo-footer.png"
-                        alt="RDS Coffee"
+                        src="images/logo-icon.png"
+                        alt="RDS Coffee Event"
                     />
 
                     <nav className="footer-links">
