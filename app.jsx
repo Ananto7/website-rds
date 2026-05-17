@@ -388,11 +388,14 @@ function About() {
         <section id="tentang" className="about">
             <div className="about-inner">
                 <div className="about-logo-box">
-                    <img className="about-logo" src="images/logo-icon.png" alt="RDS Coffee"/>
-                    <p className="about-quote">"Kami menciptakan kopi bukan hanya untuk diminum, tetapi untuk menjadi
-                        bagian dari momen."</p>
+                    <img className="about-logo" src="images/foto-about-us.png" alt="RDS Coffee"/>
+                    <div className="overlay">
+                        <p>
+                            "Kami menciptakan kopi bukan hanya untuk diminum, tetapi untuk
+                            menjadi bagian dari momen."
+                        </p>
+                    </div>
                     <div className="about-quote-divider"/>
-                    <p className="about-est">RDS Coffee · Est. 2023</p>
                 </div>
                 <div>
                     <p className="label-gold">Tentang Kami</p>
@@ -684,7 +687,7 @@ function Products({concept, setConcept}) {
                 {/* Keterangan konsep */}
                 <div style={{
                     marginTop: "1.5rem", padding: "1rem 1.5rem",
-                    background: concept === "bottle" ? "rgba(242,97,156,0.06)" : "rgba(147,171,217,0.08)",
+                    background: concept === "bottle" ? "rgba(147,171,217,0.08)" : "rgba(147,171,217,0.08)",
                     borderLeft: `3px solid ${concept === "bottle" ? "#f2619c" : "#93abd9"}`,
                     display: "flex", alignItems: "center", gap: "1rem",
                 }}>
