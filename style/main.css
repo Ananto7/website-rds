@@ -2194,6 +2194,19 @@ select:focus {
         gap: 2rem;
     }
 
+    .footer-rds-wrapper {
+        margin-right: 0;
+    }
+
+    .footer-rds-line {
+        width: auto;
+        text-align: center;
+    }
+
+    .footer-contact {
+        margin-left: 0;
+    }
+
     .footer-links {
         justify-content: center;
         gap: 1.25rem;
