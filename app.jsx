@@ -333,12 +333,12 @@ function Hero() {
             <div className="hero-inner">
                 <div className="hero-grid">
                     <div>
-                        <p className="hero-eyebrow">Coffee Experience</p>
-                        <div className="hero-title-image"><img src="images/logo-header.png" /></div>
-                        <div className="hero-divider"/>
+                        <div className="hero-title-image">
+                            <img src="images/logo-header.png" alt="RDS Coffee Event" />
+                        </div>
+                        <div className="hero-divider"></div>
                         <p className="hero-desc">
-                            Setiap momen spesialmu layak ditemani oleh secangkir kopi terbaik —
-                            kini hadir dalam botol elegan untuk tamu undanganmu.
+                            Setiap momen spesialmu layak ditemani oleh secangkir kopi terbaik
                         </p>
                         <div className="hero-buttons">
                             <a href="#produk" className="btn-primary">Lihat Produk</a>
@@ -688,7 +688,7 @@ function Products({concept, setConcept}) {
                 <div style={{
                     marginTop: "1.5rem", padding: "1rem 1.5rem",
                     background: concept === "bottle" ? "rgba(147,171,217,0.08)" : "rgba(147,171,217,0.08)",
-                    borderLeft: `3px solid ${concept === "bottle" ? "#f2619c" : "#93abd9"}`,
+                    borderLeft: `3px solid ${concept === "bottle" ? "#61b3f2" : "#93abd9"}`,
                     display: "flex", alignItems: "center", gap: "1rem",
                 }}>
                     <span style={{fontSize: "1.2rem"}}>{concept === "bottle" ? "🍾" : "☕"}</span>
