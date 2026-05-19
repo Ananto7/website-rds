@@ -212,8 +212,8 @@ const serviceBgs = [
     "#FFFFFF",      /* Acrylic  — putih bersih */
     "#EDF3FA",      /* Ice Cube — biru sky */
     "#FFFFFF",      /* Stand    — putih bersih */
-    "#e8f0fb",      /* Transport— kuning butter */
-    "#EDF3FA",      /* Ice Cube — biru sky */
+    "#EDF3FA",      /* Transport— kuning butter */
+    "#FFFFFF",      /* Ice Cube — biru sky */
 ];
 
 const serviceData = {
@@ -247,8 +247,8 @@ const serviceData = {
             "#FFFFFF",      /* Acrylic  — putih bersih */
             "#EDF3FA",      /* Ice Cube — biru sky */
             "#FFFFFF",      /* Stand    — putih bersih */
-            "#e8f0fb",      /* Transport— kuning butter */
-            "#EDF3FA",      /* Ice Cube — biru sky */
+            "#EDF3FA",      /* Transport— kuning butter */
+            "#FFFFFF",      /* Ice Cube — biru sky */
         ],
     },
     cup: {
@@ -277,8 +277,8 @@ const serviceData = {
             "#FFFFFF",      /* Acrylic  — putih bersih */
             "#EDF3FA",      /* Ice Cube — biru sky */
             "#FFFFFF",      /* Stand    — putih bersih */
-            "#e8f0fb",      /* Transport— kuning butter */
-            "#EDF3FA",      /* Ice Cube — biru sky */
+            "#EDF3FA",      /* Transport— kuning butter */
+            "#FFFFFF",      /* Ice Cube — biru sky */
         ],
     },
 };
