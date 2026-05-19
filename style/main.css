@@ -63,6 +63,7 @@
     /* Typography */
     --ff-serif: 'Cormorant Garamond', serif; /* heading elegan */
     --ff-body:  'DM Sans', sans-serif;       /* body text */
+    --ff-footer: 'Montserrat', sans-serif;
 }
 
 /* ============================================================
@@ -1362,7 +1363,7 @@ select:focus {
 
 .footer-top {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 3rem;
     flex-wrap: wrap;
@@ -1397,12 +1398,28 @@ select:focus {
     transition: color 0.2s;
 }
 
+.footer-rds-wrapper {
+    margin-right: auto;
+}
+
+.footer-rds-line {
+    font-family: var(--ff-footer);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.5);
+
+    width: min-content;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
 .footer-link:hover {
     color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-contact {
     text-align: right;
+    margin-left: auto;
 }
 
 .footer-email {

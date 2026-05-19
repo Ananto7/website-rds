@@ -1073,6 +1073,10 @@ function Footer() {
                         alt="RDS Coffee Event"
                     />
 
+                    <div className="footer-rds-wrapper"><p className="footer-rds-line">RDS<br />
+                        Coffee<br />
+                        Event.</p></div>
+
                     <nav className="footer-links">
                         {[
                             ["Produk", "#produk"],
