@@ -573,8 +573,6 @@ function ProductRow({product, index, concept, onSelect}) {
     return (
         <div className="product-row" style={{
             background: product.bgRow,
-            borderTopColor: `${product.color}70`,
-            borderBottomColor: `${product.color}70`
         }}>
             <div className="product-row-inner">
 
@@ -582,8 +580,6 @@ function ProductRow({product, index, concept, onSelect}) {
                 <div className="product-bottle-side" style={{
                     order: bottleLeft ? 1 : 2,
                     background: product.bg,
-                    borderRight: bottleLeft ? `1px solid ${product.color}60` : "none",
-                    borderLeft: !bottleLeft ? `1px solid ${product.color}60` : "none",
                     padding: hasOutside ? "0" : "4rem",
                     overflow: "hidden",
                 }}>

@@ -491,6 +491,19 @@ select:focus {
 
 /* Kotak kiri berisi logo + quote */
 .about-logo-box {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 560 / 500;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #024bab;
+    position: relative;
+    overflow: hidden;
     padding: 1px;
 }
 
@@ -515,6 +528,12 @@ select:focus {
     left: 1.5rem;
 }
 
+.about-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .overlay {
     position: absolute;
     inset: 0;
@@ -524,7 +543,7 @@ select:focus {
     justify-content: end;
     align-items: center;
 
-    padding: 6rem;
+    padding: clamp(1.25rem, 4vw, 4rem);
     text-align: center;
 
     background: rgba(0, 0, 0, 0.25);
@@ -533,35 +552,10 @@ select:focus {
 /* TEXT */
 .overlay p {
     color: white;
-    font-size: 20px;
+    font-size: clamp(0.9rem, 1.4vw, 1.25rem); /* ← FIX: font dinamis */
     line-height: 1.8;
     font-family: var(--ff-serif);
     max-width: 420px;
-}
-
-/* CARA MENGGANTI GAMBAR DI ABOUT US:
-   Di app.jsx cari <img className="about-logo" .../>
-   Ubah src="images/logo-bw.png" ke file gambar yang diinginkan
-   Ukuran ditentukan oleh width/height di bawah
-   Filter putih otomatis diterapkan untuk logo hitam putih */
-.about-logo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.about-logo-box {
-    width: 560px;
-    height: 500px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    background: #024bab;
-    position: relative;
-    overflow: hidden;
 }
 
 .about-quote {
@@ -1626,21 +1620,104 @@ select:focus {
     }
 
     /* HERO */
+    .hero {
+        min-height: auto;
+    }
+
     .hero-inner {
-        padding: 8rem 2rem 4rem;
+        padding: 7rem 2rem 4rem;
     }
 
     .hero-grid {
+        grid-template-columns: 1fr;
         gap: 3rem;
+        text-align: center;
+    }
+
+    .hero-grid > div:first-child {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-title,
+    .hero-title-image {
+        text-align: center;
+    }
+
+    .hero-title-image img {
+        margin: 0 auto;
+    }
+
+    .hero-divider {
+        margin: 1.5rem auto;
+    }
+
+    .hero-desc {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        margin-top: 2rem;
     }
 
     .hero-bottles {
         height: 440px;
     }
 
+    .btn-primary,
+    .btn-outline {
+        min-width: 180px;
+        text-align: center;
+    }
+
+    .hero-strip {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 2.5rem auto 0;
+    }
+
     .hero-bottle {
         width: 88px !important;
         height: 240px !important;
+    }
+
+    .hero-bottles > div:nth-child(1) {
+        top: 30px !important;
+        left: 5% !important;
+    }
+
+    .hero-bottles > div:nth-child(2) {
+        top: 90px !important;
+        left: 28% !important;
+    }
+
+    .hero-bottles > div:nth-child(3) {
+        top: 15px !important;
+        left: 51% !important;
+    }
+
+    .hero-bottles > div:nth-child(4) {
+        top: 75px !important;
+        left: 74% !important;
+    }
+
+    .hero-bottle-name {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-bottles {
+        height: 320px;
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .hero-bottle {
+        width: 78px !important;
+        height: 220px !important;
     }
 
     /* ABOUT */
@@ -1709,6 +1786,64 @@ select:focus {
     }
 }
 
+/* ── TABLET KECIL (≤ 768px) — transisi sebelum mobile ───── */
+@media (max-width: 768px) {
+
+    /* Hero — masih 2 kolom tapi lebih compact */
+    .hero-inner {
+        padding: 7rem 1.5rem 3rem;
+    }
+
+    .hero-grid {
+        gap: 2.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+    }
+
+    .hero-bottles {
+        height: 280px;
+        max-width: 420px;
+    }
+
+    .hero-bottle {
+        width: 68px !important;
+        height: 190px !important;
+    }
+
+    .hero-bottles > div:nth-child(1) {
+        top: 25px !important;
+        left: 4% !important;
+    }
+
+    .hero-bottles > div:nth-child(2) {
+        top: 75px !important;
+        left: 28% !important;
+    }
+
+    .hero-bottles > div:nth-child(3) {
+        top: 12px !important;
+        left: 52% !important;
+    }
+
+    .hero-bottles > div:nth-child(4) {
+        top: 62px !important;
+        left: 76% !important;
+    }
+
+    .hero-bottle-name {
+        font-size: 1.3rem !important;
+    }
+
+    .hero-bottle-sub {
+        font-size: 0.42rem !important;
+    }
+}
 
 /* ── MOBILE (≤ 640px) ───────────────────────────────────── */
 @media (max-width: 640px) {
@@ -1747,11 +1882,6 @@ select:focus {
         padding: 7rem 1.25rem 3rem;
     }
 
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
     .hero-title {
         font-size: clamp(2.5rem, 11vw, 3.5rem);
     }
@@ -1777,23 +1907,49 @@ select:focus {
 
     /* Hero bottles — diperkecil + spread di mobile */
     .hero-bottles {
-        height: 320px;
+        height: 280px;
         margin-top: 1rem;
+        max-width: 100%;
+        overflow: visible;
     }
 
     .hero-bottle {
-        width: 64px !important;
-        height: 175px !important;
+        width: 55px !important;
+        height: 155px !important;
+    }
+
+    .hero-bottles > div:nth-child(1) {
+        top: 25px !important;
+        left: 4% !important;
+    }
+
+    .hero-bottles > div:nth-child(2) {
+        top: 70px !important;
+        left: 28% !important;
+    }
+
+    .hero-bottles > div:nth-child(3) {
+        top: 15px !important;
+        left: 52% !important;
+    }
+
+    .hero-bottles > div:nth-child(4) {
+        top: 60px !important;
+        left: 76% !important;
     }
 
     .hero-bottle-name {
-        font-size: 1.4rem !important;
+        font-size: 1.1rem !important;
     }
 
     .hero-bottle-cap {
         width: 22px;
         height: 12px;
         top: -10px;
+    }
+
+    .hero-bottle-sub {
+        font-size: 0.4rem !important;
     }
 
     .hero-strip {
@@ -1824,11 +1980,9 @@ select:focus {
     }
 
     .about-logo-box {
-        padding: 2.5rem 1.5rem;
-    }
-
-    .about-logo {
-        width: 120px !important;
+        max-width: 100%;
+        margin: 0 auto;
+        aspect-ratio: 4 / 3;
     }
 
     /* PRODUCTS */
