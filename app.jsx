@@ -66,8 +66,8 @@ const products = [
             details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
-                {qty: "100 PCS", price: "Rp 1.000.000"},
-                {qty: "200 PCS", price: "Rp 2.000.000"},
+                {qty: "100 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 2.200.000"},
             ],
             /* ── GANTI FOTO DI SINI ─────────────────────────────── */
             photo: "images/foto-bottle-coast.png",   /* foto modal detail  */
@@ -78,7 +78,7 @@ const products = [
             details: "Espresso · Coconut Milk · Sweetened Condensed Milk · 100ml",
             pricing: [
                 {qty: "100 PCS", price: "Rp 600.000"},
-                {qty: "200 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 1.200.000"},
             ],
             /* GANTI FOTO CUP — taruh di folder images/ */
             photo: "images/foto-cup-detail.png",
@@ -101,8 +101,8 @@ const products = [
             details: "Espresso · Fresh Milk · Aren Syrup · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
-                {qty: "100 PCS", price: "Rp 1.000.000"},
-                {qty: "200 PCS", price: "Rp 2.000.000"},
+                {qty: "100 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 2.200.000"},
             ],
             photo: "images/foto-bottle-warm.png",
             photoOutside: "images/foto-bottle-warm.png",
@@ -112,7 +112,7 @@ const products = [
             details: "Espresso · Fresh Milk · Aren Syrup · 100ml",
             pricing: [
                 {qty: "100 PCS", price: "Rp 600.000"},
-                {qty: "200 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 1.200.000"},
             ],
             photo: "images/foto-cup-detail.png",
             photoOutside: "images/foto-cup-detail.png",
@@ -133,8 +133,8 @@ const products = [
             details: "Espresso · Fresh Milk · Sweetened Condensed Milk · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 550.000"},
-                {qty: "100 PCS", price: "Rp 1.000.000"},
-                {qty: "200 PCS", price: "Rp 2.000.000"},
+                {qty: "100 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 2.200.000"},
             ],
             photo: "images/foto-bottle-classic.png",
             photoOutside: "images/foto-bottle-classic.png",
@@ -144,7 +144,7 @@ const products = [
             details: "Espresso · Fresh Milk · Sweetened Condensed Milk · 100ml",
             pricing: [
                 {qty: "100 PCS", price: "Rp 600.000"},
-                {qty: "200 PCS", price: "Rp 1.100.000"},
+                {qty: "200 PCS", price: "Rp 1.200.000"},
             ],
             photo: "images/foto-cup-detail.png",
             photoOutside: "images/foto-cup-detail.png",
@@ -166,8 +166,8 @@ const products = [
             details: "Espresso · Fresh Milk · Almond Roast Syrup · 150ml",
             pricing: [
                 {qty: "50 PCS", price: "Rp 600.000"},
-                {qty: "100 PCS", price: "Rp 1.100.000"},
-                {qty: "200 PCS", price: "Rp 2.100.000"},
+                {qty: "100 PCS", price: "Rp 1.200.000"},
+                {qty: "200 PCS", price: "Rp 2.400.000"},
             ],
             photo: "images/foto-bottle-roast.png",
             photoOutside: "images/foto-bottle-roast.png",
@@ -177,7 +177,7 @@ const products = [
             details: "Espresso · Fresh Milk · Almond Roast Syrup · 100ml",
             pricing: [
                 {qty: "100 PCS", price: "Rp 650.000"},
-                {qty: "200 PCS", price: "Rp 1.200.000"},
+                {qty: "200 PCS", price: "Rp 1.300.000"},
             ],
             photo: "images/foto-cup-detail.png",
             photoOutside: "images/foto-cup-detail.png",
